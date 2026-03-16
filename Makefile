@@ -110,6 +110,6 @@ help:
 	@echo "  fmt           - Format code"
 	@echo "  lint          - Lint code"
 	@echo "  install       - Install binary to /usr/local/bin"
-	@echo "  build-all     - Cross-platform builds for Windows, macOS, and Linux
-  build-macos-universal - Create macOS universal binary (macOS only)"
+	@echo "  build-all     - Cross-platform builds for Windows, macOS, and Linux"
+	@echo "  build-macos-universal - Create macOS universal binary (macOS only)"
 	@echo "  help          - Show this help message"

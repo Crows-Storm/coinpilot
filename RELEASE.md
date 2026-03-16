@@ -1,142 +1,146 @@
-# 发布指南 / Release Guide
+# Release Guide
 
-本文档说明如何为CoinPilot创建GitHub Release。
+This document explains how to create GitHub Releases for CoinPilot.
 
-## 方法一：使用自动化脚本（推荐）
+## Method 1: Automated Script (Recommended)
 
-### 前提条件
+### Prerequisites
 
-1. 安装GitHub CLI：
+1. Install GitHub CLI:
    ```bash
    # macOS
    brew install gh
    
-   # Windows (使用Chocolatey)
+   # Windows (using Chocolatey)
    choco install gh
    
-   # 或者从官网下载：https://cli.github.com/
+   # Or download from: https://cli.github.com/
    ```
 
-2. 登录GitHub CLI：
+2. Login to GitHub CLI:
    ```bash
    gh auth login
    ```
 
-### 创建Release
+### Create Release
 
-1. 确保所有更改已提交并推送到main分支
+1. Ensure all changes are committed and pushed to main branch
 
-2. 运行发布脚本：
+2. Run the release script:
    ```bash
-   # 基本用法
+   # Basic usage
    ./scripts/release.sh v1.0.0
    
-   # 带发布说明
-   ./scripts/release.sh v1.0.0 "初始版本，包含基本交易功能"
+   # With release notes
+   ./scripts/release.sh v1.0.0 "Initial release with basic trading functionality"
    ```
 
-脚本会自动：
-- 构建所有平台的二进制文件
-- 创建GitHub Release
-- 上传所有二进制文件
-- 设置适当的文件描述
+The script will automatically:
+- Build binaries for all platforms
+- Create GitHub Release
+- Upload all binary files
+- Set appropriate file descriptions
 
-## 方法二：手动创建Release
+## Method 2: Manual Release Creation
 
-### 1. 构建二进制文件
+### 1. Build Binaries
 
 ```bash
-# 构建所有平台
+# Build for all platforms
 make build-all
 
-# 如果在macOS上，创建通用二进制文件
+# If on macOS, create universal binary
 make build-macos-universal
 ```
 
-### 2. 在GitHub上创建Release
+### 2. Create Release on GitHub
 
-1. 访问 https://github.com/Crows-Storm/coinpilot/releases
-2. 点击 "Create a new release"
-3. 填写以下信息：
-   - **Tag version**: `v1.0.0` (遵循语义化版本)
+1. Visit https://github.com/Crows-Storm/coinpilot/releases
+2. Click "Create a new release"
+3. Fill in the following information:
+   - **Tag version**: `v1.0.0` (follow semantic versioning)
    - **Release title**: `CoinPilot v1.0.0`
-   - **Description**: 描述此版本的新功能和改进
+   - **Description**: Describe new features and improvements in this version
 
-### 3. 上传二进制文件
+### 3. Upload Binary Files
 
-将以下文件拖拽到Release页面的"Attach binaries"区域：
+Drag and drop the following files to the "Attach binaries" area on the Release page:
 
-#### Windows版本
-- `build/coinpilot-windows-amd64.exe` → 重命名为 `coinpilot-windows-x64.exe`
-- `build/coinpilot-windows-386.exe` → 重命名为 `coinpilot-windows-x86.exe`
+#### Windows Versions
+- `build/coinpilot-windows-amd64.exe` → Rename to `coinpilot-windows-x64.exe`
+- `build/coinpilot-windows-386.exe` → Rename to `coinpilot-windows-x86.exe`
 
-#### macOS版本
-- `build/coinpilot-macos-universal` → 重命名为 `coinpilot-macos-universal`
-- `build/coinpilot-macos-intel` → 重命名为 `coinpilot-macos-intel`
-- `build/coinpilot-macos-arm64` → 重命名为 `coinpilot-macos-arm64`
+#### macOS Versions
+- `build/coinpilot-macos-universal` → Rename to `coinpilot-macos-universal`
+- `build/coinpilot-macos-intel` → Rename to `coinpilot-macos-intel`
+- `build/coinpilot-macos-arm64` → Rename to `coinpilot-macos-arm64`
 
-#### Linux版本
-- `build/coinpilot-linux-amd64` → 重命名为 `coinpilot-linux-x64`
-- `build/coinpilot-linux-arm64` → 重命名为 `coinpilot-linux-arm64`
+#### Linux Versions
+- `build/coinpilot-linux-amd64` → Rename to `coinpilot-linux-x64`
+- `build/coinpilot-linux-arm64` → Rename to `coinpilot-linux-arm64`
 
-### 4. 发布
+### 4. Publish
 
-点击 "Publish release" 完成发布。
+Click "Publish release" to complete the release.
 
-## 版本命名规范
+## Version Naming Convention
 
-使用语义化版本控制 (Semantic Versioning)：
+Use Semantic Versioning:
 
-- `v1.0.0` - 主要版本（重大更改）
-- `v1.1.0` - 次要版本（新功能）
-- `v1.0.1` - 补丁版本（bug修复）
+- `v1.0.0` - Major version (breaking changes)
+- `v1.1.0` - Minor version (new features)
+- `v1.0.1` - Patch version (bug fixes)
 
-## 发布说明模板
+## Release Notes Template
 
 ```markdown
-## 🚀 新功能
-- 添加了交易记录功能
-- 支持多交易所管理
+## 🚀 New Features
+- Added trade recording functionality
+- Support for multi-exchange management
 
-## 🐛 Bug修复
-- 修复了CSV文件读取问题
-- 改进了错误处理
+## 🐛 Bug Fixes
+- Fixed CSV file reading issues
+- Improved error handling
 
-## 📦 下载
+## 📦 Downloads
 
 ### Windows
-- [Windows 64位](链接) - 推荐大多数Windows用户
-- [Windows 32位](链接) - 适用于较老的系统
+- [Windows 64-bit](link) - Recommended for most Windows users
+- [Windows 32-bit](link) - For older systems
 
 ### macOS
-- [macOS通用版](链接) - 同时支持Intel和Apple Silicon
-- [macOS Intel版](链接) - 仅适用于Intel Mac
-- [macOS Apple Silicon版](链接) - 仅适用于M1/M2 Mac
+- [macOS Universal](link) - Supports both Intel and Apple Silicon
+- [macOS Intel](link) - Intel Mac only
+- [macOS Apple Silicon](link) - M1/M2 Mac only
 
 ### Linux
-- [Linux 64位](链接) - 适用于大多数Linux发行版
-- [Linux ARM64](链接) - 适用于ARM64架构
+- [Linux 64-bit](link) - For most Linux distributions
+- [Linux ARM64](link) - For ARM64 architecture
 
-## 📋 安装说明
+## 📋 Installation Instructions
 
-下载对应平台的文件后：
+After downloading the appropriate file for your platform:
 
-1. **Windows**: 双击运行或在命令行中使用
-2. **macOS**: 可能需要在"系统偏好设置 > 安全性与隐私"中允许运行
-3. **Linux**: 添加执行权限 `chmod +x coinpilot-linux-x64`
+1. **Windows**: Double-click to run or use in command line
+2. **macOS**: May need to allow in "System Preferences > Security & Privacy"
+3. **Linux**: Add execute permission `chmod +x coinpilot-linux-x64`
 
-## 🔄 更新
+## 🔄 Updates
 
-如果你已经安装了之前的版本，只需下载新版本替换旧文件即可。
+If you have a previous version installed, simply download the new version and replace the old file.
 ```
 
-## 自动化CI/CD（未来改进）
+## Automated CI/CD (Future Enhancement)
 
-考虑设置GitHub Actions来自动化发布流程：
+Consider setting up GitHub Actions to automate the release process:
 
-1. 当推送新tag时自动触发
-2. 自动构建所有平台
-3. 自动创建Release并上传文件
-4. 自动生成changelog
+1. Automatically trigger on new tag push
+2. Auto-build for all platforms
+3. Auto-create Release and upload files
+4. Auto-generate changelog
 
-这将在项目成熟后实施。
+This will be implemented as the project matures.
+
+---
+
+[中文版本](RELEASE_ZH.md)

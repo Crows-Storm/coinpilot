@@ -133,4 +133,4 @@ pkg/           # Public library code
 
 ---
 
-[中文版本](README_zh.md)
+[中文版本](README_ZH.md)
