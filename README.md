@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="assets/logo.svg" alt="CoinPilot Logo" width="120" height="120">
+
 # 🚀 CoinPilot
 
 **Offline Cryptocurrency Portfolio Management CLI Tool**
@@ -238,7 +240,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - Built with [Cobra](https://github.com/spf13/cobra) for CLI framework
 - Inspired by the need for privacy-focused portfolio management
-- Thanks to all [contributors](https://github.com/Crows-Storm/coinpilot/contributors)
+- Thanks to all contributors, especially [Crows-Storm](https://github.com/Crows-Storm)
 
 ## 📞 Support
 
